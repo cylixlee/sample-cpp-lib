@@ -25,6 +25,9 @@ sample_cpp_lib_dep = declare_dependency(
     include_directories: include_dir,
 )
 
+# `export` the dependency.
+meson.override_dependency('sample-cpp-lib', sample_cpp_lib_dep)
+
 # The test program.
 #
 # test() defines a test to run with the test harness. Takes two positional arguments: the first is the name of the test, and
