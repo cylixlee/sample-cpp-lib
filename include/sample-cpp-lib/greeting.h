@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace sample_lib {
+namespace sample_cpp_lib {
 
 std::string greeting();
 

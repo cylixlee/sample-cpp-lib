@@ -1,5 +1,5 @@
 # The project definition.
-project('sample-lib', 'cpp')
+project('sample-cpp-lib', 'cpp', default_options: {'default_library': 'static'})
 
 # Include directories.
 #
@@ -10,8 +10,8 @@ include_dir = include_directories('include')
 #
 # Here we define this library through the function with the same name. To declare static/shared library, use
 # `static_library` or `shared_library` functions, respectively.
-sample_lib = library(
-    'sample-lib',
+sample_cpp_lib = library(
+    'sample-cpp-lib',
     ['src/greeting.cc'],
     include_directories: include_dir,
 )
@@ -20,8 +20,8 @@ sample_lib = library(
 #
 # Meson actually manages the dependencies itself, so we have to declare a dependency which links with the library. This
 # design gives much freedom, because we can even declare a dependency which links a CMake-managed library.
-sample_lib_dep = declare_dependency(
-    link_with: [sample_lib],
+sample_cpp_lib_dep = declare_dependency(
+    link_with: [sample_cpp_lib],
     include_directories: include_dir,
 )
 
@@ -37,6 +37,6 @@ test(
     executable(
         'default-test',
         ['tests/test.cc'],
-        dependencies: [sample_lib_dep],
+        dependencies: [sample_cpp_lib_dep],
     ),
 )
